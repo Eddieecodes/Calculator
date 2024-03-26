@@ -5,9 +5,88 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+  background-color: orange ;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.container{
+  border: 7px solid grey;
+  padding: 10px;
+  height: 550px;
+  width: 300px;
+  border-radius: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  background-color: black;
 }
+.displaycontainer{
+  /* border: 5px solid grey; */
+  height: 170px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+}
+.buttoncontainer{
+  /* border: 5px solid blue; */
+  height: 360px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  
+}
+.answerdisplay{
+  /* border: 2px solid red; */
+  font-size: 20px
+}
+.valuedisplay{
+  /* border: 2px solid blue; */
+ height: 70px;
+ font-size: 30px;
+}
+
+.firstbutton{
+  background-color: grey;
+  /* padding: 10px; */
+  padding-top: 7px;
+  border-radius: 35px;
+  font-size: 25px;
+  cursor: pointer;
+  border: none;
+}
+.secondbutton{
+  background-color: rgb(49, 47, 47);
+  padding-top: 7px;
+  border-radius: 35px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+.secondbutton-span{
+  background-color: rgb(49, 47, 47);
+  padding-top: 7px;
+  border-radius: 35px;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  border: none;
+  grid-column-end: span 2;
+  
+}
+.thirdbutton{
+  background-color: orange;
+  padding-top: 7px;
+  border-radius: 35px;
+  font-size: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+/* span{
+color: red;
+padding: 10px;
+} */

@@ -6,13 +6,11 @@ const Home = function Calculator() {
         // Function to handle button click and update the value
         const handleClick = (e) => {
           setValue(value.concat(e.target.name));
-         
         };
+
         // eslint-disable-next-line no-eval
         const calculateAnswer = () => {
            setValue(eval(value).toString());
-          console.log(value);
-          
         };
         const clearClick = () => {
           setValue("");
@@ -26,7 +24,7 @@ const Home = function Calculator() {
       <div className="container">
         <div className="displaycontainer">
           <div className="answerdisplay"></div>
-          <div className="valuedisplay" value={value}>{value}</div>
+          <div className="valuedisplay" >{value}</div>
         </div>
 
         <div className="buttoncontainer">
@@ -47,7 +45,6 @@ const Home = function Calculator() {
           <button className='secondbutton' name="3" onClick = {handleClick} >3</button>
           <button className='thirdbutton' name="+" onClick = {handleClick}>+</button>
           <button className='secondbutton-span' name="0" onClick = {handleClick}>0</button>
-          {/* <button className='secondbutton'>0</button> */}
           <button className='secondbutton' name="." onClick = {handleClick}>.</button>
           <button className='thirdbutton'  onClick={calculateAnswer}>=</button>
         </div>

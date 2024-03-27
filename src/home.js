@@ -1,55 +1,78 @@
 import { useState } from "react";
+import Display from "./display";
 
 const Home = function Calculator() {
         const [value, setValue] = useState('');
+
+        // const [hasClickedIsEqualTo, setHasClickedIsEqualTo] = useState(false);
        
         // Function to handle button click and update the value
         const handleClick = (e) => {
           setValue(value.concat(e.target.name));
         };
 
-        // eslint-disable-next-line no-eval
+       
         const calculateAnswer = () => {
-           setValue(eval(value).toString());
+          try{
+            // eslint-disable-next-line no-eval
+            setValue(eval(value).toString());
+            // setHasClickedIsEqualTo(true);
+          }catch(err){
+            setValue("error")
+          }
         };
+
+        //function to clear the numbers
         const clearClick = () => {
           setValue("");
         }
+
+        //function to delete a number from behind
         const deleteClick = () => {
            setValue(value.slice(0, -1));
         }
+//array of buttons
+        const buttonNumbers = [
+          { name : "%" , buttonClass : "firstbutton"},
+          { name : "/" , buttonClass : "thirdbutton"},
+          { name : "7" , buttonClass : "secondbutton"},
+          { name : "8" , buttonClass : "secondbutton"},
+          { name : "9" , buttonClass : "secondbutton"},
+          { name  : "*", buttonClass : "thirdbutton"},
+          { name : "4" , buttonClass : "secondbutton"},
+          { name : "5" , buttonClass : "secondbutton"},
+          { name : "6" , buttonClass : "secondbutton"},
+          { name  : "-", buttonClass : "thirdbutton"},
+          { name : "1" , buttonClass : "secondbutton"},
+          { name : "2" , buttonClass : "secondbutton"},
+          { name : "3" , buttonClass : "secondbutton"},
+          { name  : "+", buttonClass : "thirdbutton"},
+          { name : "0" , buttonClass : "secondbutton-span"},
+          { name : "." , buttonClass : "secondbutton"},
+        ]
 
     return (
-        <div className="home">
-      <div className="container">
-        <div className="displaycontainer">
-          <div className="answerdisplay"></div>
-          <div className="valuedisplay" >{value}</div>
-        </div>
-
+        
+      <>
+       <Display value={value}/>
         <div className="buttoncontainer">
+         
           <button className='firstbutton' id="clearClick" onClick = {clearClick}> C </button>
           <button className='firstbutton' id="deleteClick" onClick = {deleteClick}>DEL</button>
-          <button className='firstbutton' name="%"  onClick = {handleClick}>%</button>
-          <button className='thirdbutton' name="/" onClick = {handleClick}>/</button>
-          <button className='secondbutton' name="7" onClick = {handleClick}>7</button>
-          <button className='secondbutton' name="8" onClick = {handleClick}>8</button>
-          <button className='secondbutton' name="9" onClick = {handleClick}>9</button>
-          <button className='thirdbutton' name="*" onClick = {handleClick}>*</button>
-          <button className='secondbutton' name="4" onClick = {handleClick}>4</button>
-          <button className='secondbutton' name="5" onClick = {handleClick}>5</button>
-          <button className='secondbutton' name="6" onClick = {handleClick}>6</button>
-          <button className='thirdbutton' name="-"  onClick = {handleClick}>-</button>
-          <button className='secondbutton' name="1" onClick = {handleClick}>1</button>
-          <button className='secondbutton' name="2" onClick = {handleClick}>2</button>
-          <button className='secondbutton' name="3" onClick = {handleClick} >3</button>
-          <button className='thirdbutton' name="+" onClick = {handleClick}>+</button>
-          <button className='secondbutton-span' name="0" onClick = {handleClick}>0</button>
-          <button className='secondbutton' name="." onClick = {handleClick}>.</button>
+          {
+            buttonNumbers.map(buttonNumber => {
+              
+              return(
+                <button className= {buttonNumber.buttonClass} name={buttonNumber.name} key={buttonNumber.name} onClick = {handleClick}>{buttonNumber.name}</button>
+              )
+            })
+          }
+
+         
           <button className='thirdbutton'  onClick={calculateAnswer}>=</button>
         </div>
-      </div>
-    </div>
+        </>
+     
      );
 }
 

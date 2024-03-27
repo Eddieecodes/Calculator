@@ -58,7 +58,7 @@ const Home = function Calculator() {
         <div className="buttoncontainer">
          
           <button className='firstbutton' id="clearClick" onClick = {clearClick}> C </button>
-          <button className='firstbutton' id="deleteClick" onClick = {deleteClick}>DEL</button>
+          <button className='firstbutton' id="deleteClick" onClick = {deleteClick}>D</button>
           {
             buttonNumbers.map(buttonNumber => {
               

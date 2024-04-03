@@ -3,25 +3,14 @@ import Display from "./display";
 
 const Home = function Calculator() {
         const [value, setValue] = useState('');
-
         const [hasClickedIsEqualTo, setHasClickedIsEqualTo] = useState(false);
-       
-        // Function to handle button click and update the value
-
-        //1
-        //2
-        //3
-        //"3"+"3" =33
+      
         const handleClick = (e) => {
           // setValue((preValue) => hasClickedIsEqualTo ? e.target.name : preValue + e.target.name);
-
           setValue((preValue) => hasClickedIsEqualTo ? e.target.name : value.concat(e.target.name));
           setHasClickedIsEqualTo(false);
-          // setValue((value.concat(e.target.name)));
         };
 
-       
-       
         const calculateAnswer = () => {
           try{
             // eslint-disable-next-line no-eval
@@ -41,6 +30,7 @@ const Home = function Calculator() {
         const handleDelete = () => {
            setValue(value.slice(0, -1));
         }
+
 //array of buttons
         const buttonNumbers = [
           { name : "%" , buttonClass : "firstbutton"},
@@ -60,29 +50,23 @@ const Home = function Calculator() {
           { name : "0" , buttonClass : "secondbutton-span"},
           { name : "." , buttonClass : "secondbutton"},
         ]
-
     return (
-        
       <>
        <Display value={value}/>
+
         <div className="buttoncontainer">
-         
           <button className='firstbutton' id="clearClick" onClick = {handleClear}> C </button>
           <button className='firstbutton' id="deleteClick" onClick = {handleDelete}>D</button>
           {
             buttonNumbers.map(buttonNumber => {
-              
               return(
                 <button className= {buttonNumber.buttonClass} name={buttonNumber.name} key={buttonNumber.name} onClick = {handleClick}>{buttonNumber.name}</button>
               )
             })
           }
-
-         
           <button className='thirdbutton'  onClick={calculateAnswer}>=</button>
         </div>
         </>
-     
      );
 }
 
